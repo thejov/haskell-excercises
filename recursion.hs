@@ -30,3 +30,7 @@ elem' _ [] = False
 elem' a (x:xs)
     | x == a    = True
     | otherwise = elem' a xs
+
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) = quicksort [ y | y <- xs, y <= x] ++ [x] ++ quicksort [z | z <- xs, z > x]
