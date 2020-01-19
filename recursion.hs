@@ -34,3 +34,10 @@ elem' a (x:xs)
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
 quicksort (x:xs) = quicksort [ y | y <- xs, y <= x] ++ [x] ++ quicksort [z | z <- xs, z > x]
+
+quicksort' :: (Ord a) => [a] -> [a]
+quicksort' [] = []
+quicksort' (x:xs) =
+    let smallerOrEqual = quicksort [ y | y <- xs, y <= x]
+        greater = quicksort [ y | y <- xs, y > x]
+    in quicksort' smallerOrEqual ++ [x] ++ greater
