@@ -16,3 +16,7 @@ quicksort' (x:xs) =
     let smallerOrEqual = filter (<= x) xs
         greater = filter (> x) xs
     in quicksort' smallerOrEqual ++ [x] ++ quicksort' greater
+
+largestDivisble :: Integer
+largestDivisble = head (filter p [99999,99998..])
+  where p x = (x `mod` 3829) == 0
