@@ -9,3 +9,10 @@ flip' f a b = f b a
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
 quicksort (x:xs) = quicksort (filter (<= x) xs) ++ [x] ++ quicksort (filter (> x) xs)
+
+quicksort' :: (Ord a) => [a] -> [a]
+quicksort' [] = []
+quicksort' (x:xs) = 
+    let smallerOrEqual = filter (<= x) xs
+        greater = filter (> x) xs
+    in quicksort' smallerOrEqual ++ [x] ++ quicksort' greater
