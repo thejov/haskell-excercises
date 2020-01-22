@@ -22,7 +22,7 @@ largestDivisble = head (filter p [99999,99998..])
   where p x = (x `mod` 3829) == 0
 
 collatzSequenceOf :: Integer -> [Integer]
+collatzSequenceOf 1 = [1]
 collatzSequenceOf x
-    | x == 1    = [1]
     | even x    = x : collatzSequenceOf (x `div` 2)
     | otherwise = x : collatzSequenceOf (x*3+1)
