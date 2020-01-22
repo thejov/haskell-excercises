@@ -26,3 +26,7 @@ collatzSequenceOf 1 = [1]
 collatzSequenceOf x
     | even x    = x : collatzSequenceOf (x `div` 2)
     | otherwise = x : collatzSequenceOf (x*3+1)
+
+numLongCollatzSequences :: Int
+numLongCollatzSequences = length (filter isLong (map collatzSequenceOf [1..100]))
+    where isLong xs = length xs > 15
