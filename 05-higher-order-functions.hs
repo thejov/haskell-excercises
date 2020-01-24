@@ -38,4 +38,4 @@ map'' :: (a -> b) -> [a] -> [b]
 map'' f = foldr (\x acc -> f x : acc) []
 
 elem' :: (Eq a) => a -> [a] -> Bool
-elem' x = foldr (\y acc -> if y == x then True else acc) False
+elem' x = foldr (\y acc -> (y == x) || acc) False
