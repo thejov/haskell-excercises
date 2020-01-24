@@ -30,3 +30,6 @@ collatzSequenceOf x
 numLongCollatzSequences :: Int
 numLongCollatzSequences = length (filter isLong (map collatzSequenceOf [1..100]))
     where isLong xs = length xs > 15
+
+map' :: (a -> b) -> [a] -> [b]
+map' f = foldl (\acc x -> acc ++ [f x]) []
