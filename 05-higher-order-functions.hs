@@ -39,3 +39,6 @@ map'' f = foldr (\x acc -> f x : acc) []
 
 elem' :: (Eq a) => a -> [a] -> Bool
 elem' x = foldr (\y acc -> (y == x) || acc) False
+
+maximum' :: (Ord a) => [a] -> a
+maximum' = foldl1 max
