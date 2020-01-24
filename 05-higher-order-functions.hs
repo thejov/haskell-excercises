@@ -44,4 +44,4 @@ maximum' :: (Ord a) => [a] -> a
 maximum' = foldl1 max
 
 reverse' :: [a] -> [a]
-reverse' = foldl (\acc x -> x : acc) []
+reverse' = foldl (flip (:)) []
