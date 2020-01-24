@@ -33,3 +33,6 @@ numLongCollatzSequences = length (filter isLong (map collatzSequenceOf [1..100])
 
 map' :: (a -> b) -> [a] -> [b]
 map' f = foldl (\acc x -> acc ++ [f x]) []
+
+map'' :: (a -> b) -> [a] -> [b]
+map'' f = foldr (\x acc -> f x : acc) []
