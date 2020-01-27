@@ -48,3 +48,6 @@ reverse' = foldl (flip (:)) []
 
 product' :: (Num a) => [a] -> a
 product' = foldl1 (*)
+
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' f = foldr (\a acc -> if f a then a : acc else acc ) []
