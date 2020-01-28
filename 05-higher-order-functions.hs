@@ -54,3 +54,6 @@ filter' f = foldr (\a acc -> if f a then a : acc else acc ) []
 
 last' :: [a] -> a
 last' = foldl1 (\_ x -> x)
+
+and' :: [Bool] -> Bool
+and' = foldr (&&) True
