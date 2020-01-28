@@ -57,3 +57,8 @@ last' = foldl1 (\_ x -> x)
 
 and' :: [Bool] -> Bool
 and' = foldr (&&) True
+
+-- How many elements does it take for the sum of the square roots of 
+-- all natural numbers to exceed 1000?
+sqrtSums :: Int
+sqrtSums = length (takeWhile (< 1000) (scanl1 (+) (map sqrt [1..]))) + 1
