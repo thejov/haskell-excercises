@@ -10,5 +10,5 @@ numEachWordInString = map (\word -> (head word,length word)) . group . sort . wo
 isContainedIn :: (Eq a) => [a] -> [a] -> Bool
 isContainedIn xs ys = any (isPrefixOf xs) (tails ys)
 
-rot :: Int -> String -> String
-rot n = map (chr . (+n) . ord)
+rotEncode :: Int -> String -> String
+rotEncode n = map (chr . (+n) . ord)
