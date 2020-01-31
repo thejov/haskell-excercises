@@ -12,3 +12,6 @@ isContainedIn xs ys = any (isPrefixOf xs) (tails ys)
 
 rotEncode :: Int -> String -> String
 rotEncode n = map (chr . (+n) . ord)
+
+rotDecode :: Int -> String -> String
+rotDecode n = map (chr . subtract n . ord)
