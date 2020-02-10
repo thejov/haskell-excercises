@@ -27,3 +27,6 @@ firstSumDigitEqual40' = find (\x -> sumDigits x == 40) [1..]
 
 firstSumDigitEqual40'' :: Maybe Int
 firstSumDigitEqual40'' = find ((==40) . sumDigits) [1..]
+
+firstSumDigitEqual :: Int -> Maybe Int
+firstSumDigitEqual n = find ((==n) . sumDigits) [1..]
