@@ -15,3 +15,8 @@ rotEncode n = map (chr . (+n) . ord)
 
 rotDecode :: Int -> String -> String
 rotDecode n = rotEncode (-n)
+
+sumDigits :: Int -> Int
+sumDigits = sum . map digitToInt . show
+
+firstSumDigitEqual40 = head [ x | x <- [1..], sumDigits x == 40 ]
