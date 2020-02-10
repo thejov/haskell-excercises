@@ -20,3 +20,5 @@ sumDigits :: Int -> Int
 sumDigits = sum . map digitToInt . show
 
 firstSumDigitEqual40 = head [ x | x <- [1..], sumDigits x == 40 ]
+
+firstSumDigitEqual40' = find (\x -> sumDigits x == 40) [1..]
