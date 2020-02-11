@@ -42,3 +42,6 @@ findKey' y [] = Nothing
 findKey' y ((k,v):xs)
     | y == k = Just v
     | otherwise = findKey' y xs 
+
+findKey'' :: (Eq k) => k -> [(k,v)] -> Maybe v
+findKey'' y = foldr (\(k,v) acc -> if k == y then Just v else acc) Nothing
