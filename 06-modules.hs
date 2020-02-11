@@ -36,3 +36,9 @@ findTuple x = find (\(y,_) -> y==x)
 
 findKey :: (Eq k) => k -> [(k,v)] -> v
 findKey x = snd . head . filter (\(y,_) -> x==y)
+
+findKey' :: (Eq k) => k -> [(k,v)] -> Maybe v
+findKey' y [] = Nothing
+findKey' y ((k,v):xs)
+    | y == k = Just v
+    | otherwise = findKey' y xs 
