@@ -30,3 +30,6 @@ firstSumDigitEqual40'' = find ((==40) . sumDigits) [1..]
 
 firstSumDigitEqual :: Int -> Maybe Int
 firstSumDigitEqual n = find ((==n) . sumDigits) [1..]
+
+findTuple :: (Eq a) => a -> [(a,b)] -> Maybe (a,b)
+findTuple x = find (\(y,_) -> y==x)
