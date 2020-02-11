@@ -33,3 +33,6 @@ firstSumDigitEqual n = find ((==n) . sumDigits) [1..]
 
 findTuple :: (Eq a) => a -> [(a,b)] -> Maybe (a,b)
 findTuple x = find (\(y,_) -> y==x)
+
+findKey :: (Eq k) => k -> [(k,v)] -> v
+findKey x = snd . head . filter (\(y,_) -> x==y)
