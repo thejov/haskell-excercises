@@ -45,3 +45,6 @@ findKey' y ((k,v):xs)
 
 findKey'' :: (Eq k) => k -> [(k,v)] -> Maybe v
 findKey'' y = foldr (\(k,v) acc -> if k == y then Just v else acc) Nothing
+
+stringToDigits :: String -> [Int]
+stringToDigits = map digitToInt . filter isDigit
