@@ -14,10 +14,10 @@ sphereArea :: Float -> Float
 sphereArea radius = 4 * pi * (radius ^ 2)
 
 cubeVolume :: Float -> Float
-cubeVolume side = side ^ 3
+cubeVolume side = cuboidVolume side side side
 
 cubeArea :: Float -> Float
-cubeArea side = 6 * (side ^ 2)
+cubeArea side = cuboidArea side side side
 
 cuboidVolume :: Float -> Float -> Float -> Float
 cuboidVolume side1 side2 side3 = side1 * side2 * side3
