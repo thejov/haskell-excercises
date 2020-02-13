@@ -20,7 +20,10 @@ cubeArea :: Float -> Float
 cubeArea side = cuboidArea side side side
 
 cuboidVolume :: Float -> Float -> Float -> Float
-cuboidVolume side1 side2 side3 = side1 * side2 * side3
+cuboidVolume a b c = a * b * c
 
 cuboidArea :: Float -> Float -> Float -> Float
-cuboidArea side1 side2 side3 = 2 * ( side1 * side2 + side1 * side3 + side2 * side3 )
+cuboidArea a b c = 2 * ( rectangleArea a b + rectangleArea a c + rectangleArea b c )
+
+rectangleArea :: Float -> Float -> Float
+rectangleArea a b = a * b
