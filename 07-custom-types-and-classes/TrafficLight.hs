@@ -1,3 +1,5 @@
+module TrafficLight (TrafficLight(..)) where
+
 data TrafficLight = Red | Green | Yellow
 
 instance Eq TrafficLight where
