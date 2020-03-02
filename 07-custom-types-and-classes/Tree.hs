@@ -27,3 +27,7 @@ treeHasElement x (Node a left right)
 
 buildTree :: (Ord a) => [a] -> Tree a
 buildTree = foldr treeInsert EmptyTree
+
+instance Functor Tree where
+    fmap f EmptyTree = EmptyTree
+    fmap f (Node a left right) = Node (f a) (fmap f left) (fmap f right)
