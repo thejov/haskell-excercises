@@ -1,7 +1,5 @@
 import System.IO
 
-main = do
-  handle <- openFile "girlfriend.txt" ReadMode
+main = withFile "girlfriend.txt" ReadMode (\handle -> do
   contents <- hGetContents handle
-  putStr contents
-  hClose handle
+  putStr contents)
