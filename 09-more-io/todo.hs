@@ -9,6 +9,7 @@ dispatch :: String -> [String] -> IO ()
 dispatch "add" = add
 dispatch "view" = view
 dispatch "remove" = remove
+dispatch "bump" = bump
 
 main = do
   (command:argList) <- getArgs
@@ -31,6 +32,24 @@ remove [fileName, numberString] = do
       numberedItems = zipWith (\i todoItem -> show i ++ " - " ++ todoItem) [0..] todoItems
   let number = read numberString
       newTodoItems = unlines $ delete (todoItems !! number) todoItems  
+  bracketOnError (openTempFile "." "temp")
+      (\(tempName, tempHandle) -> do
+          hClose tempHandle
+          removeFile tempName)
+      (\(tempName, tempHandle) -> do
+          hPutStr tempHandle newTodoItems
+          hClose tempHandle
+          removeFile "todo.txt"
+          renameFile tempName "todo.txt")
+
+bump :: [String] -> IO ()
+bump [fileName, numberString] = do
+  contents <- readFile fileName
+  let todoItems = lines contents
+      numberedItems = zipWith (\i todoItem -> show i ++ " - " ++ todoItem) [0..] todoItems
+  let number = read numberString
+      itemToBump = todoItems !! number  
+      newTodoItems = unlines . nub $ itemToBump : todoItems
   bracketOnError (openTempFile "." "temp")
       (\(tempName, tempHandle) -> do
           hClose tempHandle
