@@ -1,16 +1,17 @@
-type Section = (Int,Int,Int)
-type Route = [Int]
+type Section = (Int, Int, Int)
+data Label = A | B | C deriving (Show)
+type Route = [(Label, Int)]
 
 shortestRoute :: [Section] -> Route
 shortestRoute = reverse . pickShorterRoute . foldl shortestRouteInSection ([],[])
 
 shortestRouteInSection :: (Route, Route) -> Section -> (Route,Route)
 shortestRouteInSection (routeToA, routeToB) (a,b,c) = 
-  (pickShorterRoute (a:routeToA, c:b:routeToB), pickShorterRoute (b:routeToB, c:a:routeToA))
+  (pickShorterRoute ((A,a):routeToA, (C,c):(B,b):routeToB), pickShorterRoute ((B,b):routeToB, (C,c):(A,a):routeToA))
 
 pickShorterRoute :: (Route,Route) -> Route
 pickShorterRoute (routeA,routeB)
-  | sum routeA < sum routeB = routeA
+  | sum (map snd routeA) < sum (map snd routeB) = routeA
   | otherwise               = routeB
 
 exampleSections =
