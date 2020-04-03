@@ -2,11 +2,11 @@ type Section = (Int,Int,Int)
 type Route = [Int]
 
 shortestRoute :: [Section] -> Route
-shortestRoute = pickShorterRoute . foldl shortestRouteInSection ([],[])
+shortestRoute = reverse . pickShorterRoute . foldl shortestRouteInSection ([],[])
 
 shortestRouteInSection :: (Route, Route) -> Section -> (Route,Route)
 shortestRouteInSection (routeToA, routeToB) (a,b,c) = 
-  (pickShorterRoute (routeToA++[a], routeToB ++ [b] ++ [c]), pickShorterRoute (routeToB++[b], routeToA ++ [a] ++ [c]))
+  (pickShorterRoute (a:routeToA, c:b:routeToB), pickShorterRoute (b:routeToB, c:a:routeToA))
 
 pickShorterRoute :: (Route,Route) -> Route
 pickShorterRoute (routeA,routeB)
