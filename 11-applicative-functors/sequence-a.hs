@@ -1,2 +1,4 @@
+import Control.Applicative
+
 sequenceA' :: (Applicative f) => [f a] -> f [a]
-sequenceA' = foldr (\x acc -> (:) <$> x <*> acc) (pure [])
+sequenceA' = foldr (liftA2 (:)) (pure [])
