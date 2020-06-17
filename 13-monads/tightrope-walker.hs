@@ -15,6 +15,6 @@ banana :: Pole -> Maybe Pole
 banana _ = Nothing 
 
 routine :: Maybe Pole
-routine = return (0,0) >>= landLeft 2 >>= landRight 2 >>= landLeft 1
+routine = landLeft 2 (0,0) >>= landRight 2 >>= landLeft 1
 
 x -: f = f x
