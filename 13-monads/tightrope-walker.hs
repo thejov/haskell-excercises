@@ -14,4 +14,7 @@ landRight n (left, right)
 banana :: Pole -> Maybe Pole
 banana _ = Nothing 
 
+routine :: Maybe Pole
+routine = return (0,0) >>= landLeft 2 >>= landRight 2 >>= landLeft 1
+
 x -: f = f x
