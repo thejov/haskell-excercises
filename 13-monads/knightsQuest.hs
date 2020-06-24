@@ -17,4 +17,4 @@ in3 start = do
   moveKnight second
 
 in3' :: KnightPosition -> [KnightPosition]
-in3' start = return start >>= moveKnight >>= moveKnight >>= moveKnight
+in3' start = moveKnight start >>= moveKnight >>= moveKnight
