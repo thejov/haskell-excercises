@@ -14,5 +14,4 @@ in3 :: KnightPosition -> [KnightPosition]
 in3 start = do
   first <- moveKnight start
   second <- moveKnight first
-  third <- moveKnight second
-  return third
+  moveKnight second
