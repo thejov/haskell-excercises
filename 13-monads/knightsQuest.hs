@@ -18,3 +18,6 @@ in3 start = do
 
 in3' :: KnightPosition -> [KnightPosition]
 in3' start = moveKnight start >>= moveKnight >>= moveKnight
+
+canReactIn3 :: KnightPosition -> KnightPosition -> Bool
+canReactIn3 start end = end `elem` in3 start
